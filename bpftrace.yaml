@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: bpftrace
+  name: bpftrace
+spec:
+  containers:
+  - image: sheenam3/bpftrace
+    name: bpftrace
+    command: ["sleep", "infinity"]
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - mountPath: /proc
+      name: host-proc
+    - mountPath: /sys/kernel/debug
+      name: host-kernel
+  volumes:
+  - name: host-proc
+    hostPath:
+      path: /proc
+  - name: host-kernel
+    hostPath:
+      path: /sys/kernel/debug
