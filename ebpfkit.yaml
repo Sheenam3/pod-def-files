@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: ebpfkit
+  name: ebpfkit
+spec:
+  containers:
+  - image: sheenam3/ebpfkit
+    name: ebpfkit
+    command: ["sleep", "infinity"]
